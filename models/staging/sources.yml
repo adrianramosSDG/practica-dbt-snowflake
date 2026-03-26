@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: tpch
+    database: PRACTICA_DWH
+    schema: RAW_TPCH
+
+    tables:
+      - name: customer
+      - name: orders
+      - name: lineitem
+      - name: part
+      - name: partsupp
+      - name: supplier
+      - name: nation
+      - name: region
