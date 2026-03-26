@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_lineitem
+    description: "Staging model for line items with incremental load"
+    columns:
+      - name: orderkey
+        tests:
+          - not_null
+      - name: linenumber
+        tests:
+          - not_null

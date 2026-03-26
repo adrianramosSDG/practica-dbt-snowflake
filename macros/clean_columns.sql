@@ -9,8 +9,21 @@
         {% set new_name = col.name.split("_", 1)[1] if "_" in col.name else col.name %}
         {% set col_type = col.data_type | upper %}
 
-        {% if new_name == "NAME" %}
+        {# Omitir columnas #}
+        {% if new_name in ["NAME", "SHIPPRIORITY"] %}
             {{ log("Columna omitida en tabla " ~ table_name ~ ": " ~ new_name, info=True) }}
+
+        {# Dividir ORDERPRIORITY en dos columnas #}
+        {% elif new_name == "ORDERPRIORITY" %}
+            {{ log("Columna dividida en tabla " ~ table_name ~ ": " ~ new_name, info=True) }}
+
+            {% if not ns.first %}, {% endif %}
+            {% set ns.first = false %}
+
+            to_number(split_part({{ col_name }}, '-', 1)) as orderpriority,
+            split_part({{ col_name }}, '-', 2) as priorityname
+
+        {# Resto de columnas #}
         {% else %}
             {{ log("Columna NO omitida en tabla " ~ table_name ~ ": " ~ new_name, info=True) }}
 
