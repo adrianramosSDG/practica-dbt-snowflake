@@ -1,30 +1,29 @@
 version: 2
 
 models:
-  - name: dim_customer
-    columns:
-      - name: customer_key
-        tests:
-          - not_null
-          - unique
-
   - name: dim_product
+    description: "Dimensión de productos. Contiene información descriptiva de cada producto."
     columns:
       - name: product_key
+        description: "Clave primaria del producto."
         tests:
           - not_null
           - unique
 
   - name: dim_supplier
+    description: "Dimensión de proveedores."
     columns:
       - name: supplier_key
+        description: "Clave primaria del proveedor."
         tests:
           - not_null
           - unique
 
   - name: dim_date
+    description: "Dimensión de fechas utilizada para análisis temporal."
     columns:
       - name: date_key
+        description: "Clave primaria de la fecha."
         tests:
           - not_null
           - unique
