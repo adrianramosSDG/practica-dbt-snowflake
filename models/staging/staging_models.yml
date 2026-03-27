@@ -2,11 +2,56 @@ version: 2
 
 models:
   - name: stg_lineitem
-    description: "Staging model for line items with incremental load"
+    description: "Modelo staging de líneas de pedido. Contiene el detalle de cada producto incluido en un pedido."
     columns:
       - name: orderkey
+        description: "Identificador del pedido al que pertenece la línea."
         tests:
           - not_null
+
       - name: linenumber
+        description: "Número de línea dentro del pedido."
         tests:
           - not_null
+
+      - name: partkey
+        description: "Identificador del producto."
+
+      - name: suppkey
+        description: "Identificador del proveedor."
+
+      - name: quantity
+        description: "Cantidad del producto pedida."
+
+      - name: extendedprice
+        description: "Importe bruto de la línea antes de descuento."
+
+      - name: discount
+        description: "Descuento aplicado a la línea."
+
+      - name: tax
+        description: "Impuesto aplicado a la línea."
+
+      - name: returnflag
+        description: "Indicador de devolución."
+
+      - name: linestatus
+        description: "Estado de la línea del pedido."
+
+      - name: shipdate
+        description: "Fecha de envío."
+
+      - name: commitdate
+        description: "Fecha de compromiso."
+
+      - name: receiptdate
+        description: "Fecha de recepción."
+
+      - name: shipinstruct
+        description: "Instrucciones de envío."
+
+      - name: shipmode
+        description: "Modo de envío."
+
+      - name: comment
+        description: "Comentario asociado a la línea."

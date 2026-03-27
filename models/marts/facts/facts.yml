@@ -2,16 +2,21 @@ version: 2
 
 models:
   - name: fct_lineitems
+    description: "Tabla de hechos que contiene el detalle de cada línea de pedido. Incluye claves a las dimensiones de cliente, producto, proveedor y fecha para su análisis."
+
     columns:
       - name: order_key
+        description: "Identificador del pedido al que pertenece la línea."
         tests:
           - not_null
 
       - name: line_number
+        description: "Número de línea dentro de cada pedido."
         tests:
           - not_null
 
       - name: customer_key
+        description: "Clave foránea que referencia a la dimensión de clientes."
         tests:
           - not_null
           - relationships:
@@ -20,6 +25,7 @@ models:
                 field: customer_key
 
       - name: product_key
+        description: "Clave foránea que referencia a la dimensión de productos."
         tests:
           - not_null
           - relationships:
@@ -28,6 +34,7 @@ models:
                 field: product_key
 
       - name: supplier_key
+        description: "Clave foránea que referencia a la dimensión de proveedores."
         tests:
           - not_null
           - relationships:
@@ -36,6 +43,7 @@ models:
                 field: supplier_key
 
       - name: date_key
+        description: "Clave foránea que referencia a la dimensión de fechas."
         tests:
           - not_null
           - relationships:
