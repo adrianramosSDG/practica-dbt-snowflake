@@ -38,3 +38,12 @@ models:
   practica_dbt_snowflake:
     staging:
       +materialized: table
+    marts:
+      dimensions:
+        +materialized: table
+        +grants:
+          select: ['PUBLIC']
+      facts:
+        +materialized: table
+        +grants:
+          select: ['PUBLIC']
