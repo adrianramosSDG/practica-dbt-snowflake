@@ -1,0 +1,35 @@
+version: 2
+
+snapshots:
+  - name: customers_snapshot
+    relation: ref('stg_customers')
+    config:
+      schema: snapshots
+      database: PRACTICA_DWH
+      unique_key: custkey
+      strategy: check
+      check_cols:
+        - name
+        - address
+        - nationkey
+        - phone
+        - acctbal
+        - mktsegment
+        - comment
+      dbt_valid_to_current: "to_date('9999-12-31')"
+
+  - name: suppliers_snapshot
+    relation: ref('stg_supplier')
+    config:
+      schema: snapshots
+      database: PRACTICA_DWH
+      unique_key: suppkey
+      strategy: check
+      check_cols:
+        - name
+        - address
+        - nationkey
+        - phone
+        - acctbal
+        - comment
+      dbt_valid_to_current: "to_date('9999-12-31')"
