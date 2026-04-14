@@ -34,18 +34,32 @@ models:
 
       - name: returnflag
         description: "Indicador de devolución."
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['N', 'R', 'A']
 
       - name: linestatus
         description: "Estado de la línea del pedido."
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['F', 'O', 'P']
 
       - name: shipdate
         description: "Fecha de envío."
+        tests:
+          - date_range
 
       - name: commitdate
         description: "Fecha de compromiso."
+        tests:
+          - date_range
 
       - name: receiptdate
         description: "Fecha de recepción."
+        tests:
+          - date_range
 
       - name: shipinstruct
         description: "Instrucciones de envío."
@@ -55,3 +69,28 @@ models:
 
       - name: comment
         description: "Comentario asociado a la línea."
+  - name: stg_orders
+    columns:
+      - name: orderdate
+        tests:
+          - date_range
+      - name: orderstatus
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['F', 'O', 'P']
+      - name: priorityname
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['NOT SPECIFIED', 'URGENT', 'LOW', 'MEDIUM', 'HIGH']
+  - name: stg_customers
+    columns:
+      - name: phone
+        tests:
+          - phone_format
+  - name: stg_supplier
+    columns:
+      - name: phone
+        tests:
+          - phone_format
