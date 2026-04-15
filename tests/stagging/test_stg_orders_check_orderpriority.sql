@@ -1,3 +1,5 @@
+{{ config(tags=['stagging']) }}
+
 SELECT *
 FROM {{ ref('stg_orders') }}
 WHERE orderpriority IS NOT NULL

@@ -1,3 +1,5 @@
+{{ config(tags=['business']) }}
+
 SELECT f.*
 FROM {{ ref('fct_lineitems') }} f
 LEFT JOIN {{ ref('dim_product') }} d

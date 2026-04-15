@@ -1,4 +1,7 @@
-{{ config(materialized='table') }}
+{{ config(
+    materialized='table',
+    tags=['marts', 'dimension']
+) }}
 
 select
     c.custkey        as customer_key,

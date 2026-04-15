@@ -1,4 +1,7 @@
-{{ config(materialized='table') }}
+{{ config(
+    materialized='table',
+    tags=['marts', 'dimension']
+) }}
 
 select
     p.partkey        as product_key,

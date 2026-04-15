@@ -1,3 +1,6 @@
+{{ config(tags=['generic']) }}
+
+
 {% test phone_format(model, column_name) %}
     SELECT *
     FROM {{ model }}

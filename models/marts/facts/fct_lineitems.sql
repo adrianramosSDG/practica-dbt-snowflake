@@ -1,4 +1,8 @@
-{{ config(materialized='table') }}
+{{ config(
+    materialized='table',
+    tags=['marts', 'fact']
+    ) 
+}}
 
 with lineitems as (
 

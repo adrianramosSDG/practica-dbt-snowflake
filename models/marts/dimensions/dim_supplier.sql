@@ -1,4 +1,7 @@
-{{ config(materialized='table') }}
+{{ config(
+    materialized='table',
+    tags=['marts', 'dimension']
+) }}
 
 select
     s.suppkey        as supplier_key,

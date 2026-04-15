@@ -9,7 +9,6 @@ snapshots:
       unique_key: custkey
       strategy: check
       check_cols:
-        - name
         - address
         - nationkey
         - phone
@@ -26,7 +25,6 @@ snapshots:
       unique_key: suppkey
       strategy: check
       check_cols:
-        - name
         - address
         - nationkey
         - phone
