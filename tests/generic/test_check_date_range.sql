@@ -1,3 +1,6 @@
+{{ config(tags=['generic']) }}
+
+
 {% test date_range(model, column_name) %}
     SELECT *
     FROM {{ model }}
