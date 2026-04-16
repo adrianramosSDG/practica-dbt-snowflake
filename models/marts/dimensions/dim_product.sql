@@ -11,4 +11,4 @@ select
     p.size           as product_size,
     p.container      as container,
     p.retailprice    as retail_price
-from {{ ref('stg_part') }} p
+from {{ ref('stg_tpch__part') }} p

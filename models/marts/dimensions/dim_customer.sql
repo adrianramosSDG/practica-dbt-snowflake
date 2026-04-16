@@ -11,6 +11,6 @@ select
     c.mktsegment     as market_segment,
     c.nationkey      as nation_key,
     n.regionkey      as region_key
-from {{ ref('stg_customers') }} c
-left join {{ ref('stg_nation') }} n
+from {{ ref('stg_tpch__customer') }} c
+left join {{ ref('stg_tpch__nation') }} n
     on c.nationkey = n.nationkey

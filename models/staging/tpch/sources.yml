@@ -1,0 +1,72 @@
+version: 2
+
+sources:
+  - name: tpch
+    description: "Fuentes raw del dataset TPCH cargadas en Snowflake para el proyecto analítico."
+    database: PRACTICA_DWH
+    schema: RAW_TPCH
+
+    tables:
+      - name: customer
+        description: "Tabla raw de clientes."
+        config:
+          loaded_at_field: "'1998-01-01'::timestamp"
+          freshness:
+            warn_after: {count: 100000, period: day}
+            error_after: {count: 200000, period: day}
+
+      - name: orders
+        description: "Tabla raw de pedidos."
+        config:
+          loaded_at_field: "O_ORDERDATE::timestamp"
+          freshness:
+            warn_after: {count: 100000, period: day}
+            error_after: {count: 200000, period: day}
+
+      - name: lineitem
+        description: "Tabla raw de líneas de pedido."
+        config:
+          loaded_at_field: "L_SHIPDATE::timestamp"
+          freshness:
+            warn_after: {count: 100000, period: day}
+            error_after: {count: 200000, period: day}
+
+      - name: part
+        description: "Tabla raw de productos."
+        config:
+          loaded_at_field: "'1998-01-01'::timestamp"
+          freshness:
+            warn_after: {count: 100000, period: day}
+            error_after: {count: 200000, period: day}
+
+      - name: partsupp
+        description: "Tabla raw de relación entre productos y proveedores."
+        config:
+          loaded_at_field: "'1998-01-01'::timestamp"
+          freshness:
+            warn_after: {count: 100000, period: day}
+            error_after: {count: 200000, period: day}
+
+      - name: supplier
+        description: "Tabla raw de proveedores."
+        config:
+          loaded_at_field: "'1998-01-01'::timestamp"
+          freshness:
+            warn_after: {count: 100000, period: day}
+            error_after: {count: 200000, period: day}
+
+      - name: nation
+        description: "Tabla raw de naciones."
+        config:
+          loaded_at_field: "'1998-01-01'::timestamp"
+          freshness:
+            warn_after: {count: 100000, period: day}
+            error_after: {count: 200000, period: day}
+
+      - name: region
+        description: "Tabla raw de regiones."
+        config:
+          loaded_at_field: "'1998-01-01'::timestamp"
+          freshness:
+            warn_after: {count: 100000, period: day}
+            error_after: {count: 200000, period: day}

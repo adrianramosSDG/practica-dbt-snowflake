@@ -2,7 +2,7 @@ version: 2
 
 snapshots:
   - name: customers_snapshot
-    relation: ref('stg_customers')
+    relation: ref('stg_tpch__customer')
     config:
       schema: snapshots
       database: PRACTICA_DWH
@@ -18,7 +18,7 @@ snapshots:
       dbt_valid_to_current: "to_date('9999-12-31')"
 
   - name: suppliers_snapshot
-    relation: ref('stg_supplier')
+    relation: ref('stg_tpch__supplier')
     config:
       schema: snapshots
       database: PRACTICA_DWH

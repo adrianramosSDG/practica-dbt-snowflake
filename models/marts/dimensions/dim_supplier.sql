@@ -10,6 +10,6 @@ select
     s.acctbal        as supplier_acctbal,
     s.nationkey      as nation_key,
     n.regionkey      as region_key
-from {{ ref('stg_supplier') }} s
-left join {{ ref('stg_nation') }} n
+from {{ ref('stg_tpch__supplier') }} s
+left join {{ ref('stg_tpch__nation') }} n
     on s.nationkey = n.nationkey
