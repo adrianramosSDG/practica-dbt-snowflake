@@ -22,7 +22,7 @@ with lineitems as (
         receiptdate,
         shipinstruct,
         shipmode
-    from {{ ref('stg_lineitem') }}
+    from {{ ref('stg_tpch__lineitem') }}
 
 ),
 
@@ -32,7 +32,7 @@ orders as (
         orderkey,
         custkey,
         orderdate
-    from {{ ref('stg_orders') }}
+    from {{ ref('stg_tpch__orders') }}
 
 ),
 

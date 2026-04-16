@@ -27,3 +27,12 @@ models:
         tests:
           - not_null
           - unique
+
+  - name: dim_customer
+    description: "Dimensión de clientes."
+    columns:
+      - name: customer_key
+        description: "Clave primaria del cliente."
+        tests:
+          - not_null
+          - unique

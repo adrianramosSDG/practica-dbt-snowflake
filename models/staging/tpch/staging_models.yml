@@ -1,8 +1,14 @@
 version: 2
 
 models:
-  - name: stg_lineitem
+  - name: stg_tpch__lineitem
     description: "Modelo staging de líneas de pedido. Contiene el detalle de cada producto incluido en un pedido."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - orderkey
+              - linenumber
     columns:
       - name: orderkey
         description: "Identificador del pedido al que pertenece la línea."
@@ -69,28 +75,100 @@ models:
 
       - name: comment
         description: "Comentario asociado a la línea."
-  - name: stg_orders
+
+  - name: stg_tpch__orders
+    description: "Modelo staging de pedidos."
     columns:
+      - name: orderkey
+        description: "Identificador único del pedido."
+        tests:
+          - not_null
+          - unique
+
       - name: orderdate
+        description: "Fecha del pedido."
         tests:
           - date_range
+
       - name: orderstatus
+        description: "Estado del pedido."
         tests:
           - accepted_values:
               arguments:
                 values: ['F', 'O', 'P']
+
       - name: priorityname
+        description: "Prioridad textual del pedido."
         tests:
           - accepted_values:
               arguments:
                 values: ['NOT SPECIFIED', 'URGENT', 'LOW', 'MEDIUM', 'HIGH']
-  - name: stg_customers
+
+  - name: stg_tpch__customer
+    description: "Modelo staging de clientes."
     columns:
+      - name: custkey
+        description: "Identificador único del cliente."
+        tests:
+          - not_null
+          - unique
+
       - name: phone
+        description: "Teléfono del cliente."
         tests:
           - phone_format
-  - name: stg_supplier
+
+  - name: stg_tpch__supplier
+    description: "Modelo staging de proveedores."
     columns:
+      - name: suppkey
+        description: "Identificador único del proveedor."
+        tests:
+          - not_null
+          - unique
+
       - name: phone
+        description: "Teléfono del proveedor."
         tests:
           - phone_format
+
+  - name: stg_tpch__nation
+    description: "Modelo staging de naciones."
+    columns:
+      - name: nationkey
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_tpch__region
+    description: "Modelo staging de regiones."
+    columns:
+      - name: regionkey
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_tpch__part
+    description: "Modelo staging de productos."
+    columns:
+      - name: partkey
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_tpch__partsupp
+    description: "Modelo staging de relación producto-proveedor."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - partkey
+              - suppkey
+    columns:
+      - name: partkey
+        tests:
+          - not_null
+
+      - name: suppkey
+        tests:
+          - not_null

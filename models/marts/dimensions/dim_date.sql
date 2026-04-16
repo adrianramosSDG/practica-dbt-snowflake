@@ -7,7 +7,7 @@ with distinct_dates as (
 
     select distinct
         orderdate
-    from {{ ref('stg_orders') }}
+    from {{ ref('stg_tpch__orders') }}
     where orderdate is not null
 
 )

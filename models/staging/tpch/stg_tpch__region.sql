@@ -1,20 +1,4 @@
-with 
+{{ config(tags=['staging']) }}
 
-source as (
-
-    select * from {{ source('tpch', 'region') }}
-
-),
-
-renamed as (
-
-    select
-        r_regionkey,
-        r_name,
-        r_comment
-
-    from source
-
-)
-
-select * from renamed
+select {{ clean_columns_auto("tpch", "region") }}
+from {{ source("tpch", "region") }}
